@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updateLayoutParams
 import androidx.navigation.fragment.findNavController
 import com.kis.coordinatorlayoutdemo.databinding.FragmentFirstBinding
 
@@ -26,7 +28,18 @@ class FirstFragment : Fragment() {
     ): View {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+
+        binding.button1.setOnClickListener {
+            binding.container.updateLayoutParams {
+                width = 400
+            }
+        }
+        binding.button2.setOnClickListener {
+            binding.container.updateLayoutParams {
+                width = 1200
+            }
+        }
+
         return binding.root
 
     }
